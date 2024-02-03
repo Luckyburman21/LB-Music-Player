@@ -7,13 +7,20 @@ import { faPlay, faPause,faStepForward, faStepBackward } from '@fortawesome/free
 import MusicIMG from "./image/music1.gif";
 
 // getting all music data from localStorage
+var mydata=false;
 function getLSD() 
 {
       const data = JSON.parse(localStorage.getItem("myaudio"));
       if (data){
-        return data
+       if(data.length>0)
+       {
+        mydata=true;
+       }
+       return data;
+       
       }
-      else{
+      else
+      {
         return [];
       } 
 }
@@ -23,10 +30,15 @@ function getLastAudio()
 {
   const data = JSON.parse(localStorage.getItem("lastaudio"));
   if (data) {
-    return data;
-  } else {
-    return { index: 0, time: 0 };
-  }
+    if(mydata)
+    {
+      return data;
+    }else 
+    {
+      return { index: 0, time: 0 };
+    }
+   
+  } 
 }
 
 
@@ -108,17 +120,19 @@ function AudioPlayer() {
    //function to toggle play pause button and icon
 
   const togglePlayPause = () => {
-
-    if (audioref.current) {
-      if (audioref.current.paused) {
-        setIsPlaying(true);
-        audioref.current.play();
-      } else {
-        audioref.current.pause();
-        setIsPlaying(false);
-      }
+if(allfiles.length>0){
+  if (audioref.current) {
+    if (audioref.current.paused) {
+      setIsPlaying(true);
+      audioref.current.play();
+    } else {
+      audioref.current.pause();
+      setIsPlaying(false);
     }
-  };
+  }
+};
+}
+   
 
 
 //setting allfiles in LocalStorage
@@ -138,7 +152,6 @@ function AudioPlayer() {
 
 //setting data in state when component load or re-render
   useEffect(() => {
-
     if (allfiles.length === 0) {
       setCurrplay({ index: 0, time: 0 });
       localStorage.setItem("lastaudio", JSON.stringify({index:0,time:0}));
@@ -155,8 +168,9 @@ function AudioPlayer() {
     audioref.current.addEventListener("pause", () => {
       setIsPlaying(false);
     });
-  }, []);
+  }, [allfiles]);
  
+
  
   return (
     <>
