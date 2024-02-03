@@ -163,7 +163,7 @@ function AudioPlayer() {
       <div className="container">
 
         <header>
-          <h2>┈►ℒℬ ℳ𝓊𝓈𝒾𝒸 𝒫𝓁𝒶𝓎ℯ𝓇 ◄┈</h2>
+          <h2>ℒℬ ℳ𝓊𝓈𝒾𝒸 𝒫𝓁𝒶𝓎ℯ𝓇</h2>
         </header>
 
         <main>
@@ -173,7 +173,7 @@ function AudioPlayer() {
 
         {/* current audio name as title */}
             <div className="curraudio">
-              <p>{allfiles[currplay.index].name}</p>
+              <p>{allfiles.length > 0 ? allfiles[currplay.index].name:""}</p>
             </div>
 
             {/* music gif */}

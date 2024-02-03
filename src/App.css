@@ -12,6 +12,7 @@ html {
   min-height: 100vh;
   max-height: auto;
   background-image: linear-gradient(to right, #b5863a, #6b37a6);
+  user-select: none;
 }
 
 header {
@@ -206,6 +207,9 @@ audio::-webkit-media-controls-timeline {
   .playlist{
     width: 80%;
   }
+  .empty-playlist{
+    width: 70%;
+  }
 }
 
 @media (max-width: 500px) {
@@ -223,6 +227,9 @@ audio::-webkit-media-controls-timeline {
   }
   .btn-div {
     width: 55%;
+  }
+  .empty-playlist{
+    width: 80%;
   }
 }
 
