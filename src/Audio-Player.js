@@ -200,8 +200,8 @@ function AudioPlayer() {
 
               </div>
 
-              <audio ref={audioref} controls onEnded={nextfun}>
-              <source  src={allfiles.length > 0 ? allfiles[currplay.index].url : ""}/>
+              <audio ref={audioref} src={allfiles.length > 0 ? allfiles[currplay.index].url : ""} preload="metadata" controls onEnded={nextfun}>
+             
               </audio>
 
             </div>
