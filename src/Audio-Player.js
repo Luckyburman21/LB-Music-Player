@@ -141,6 +141,7 @@ function AudioPlayer() {
 
     if (allfiles.length === 0) {
       setCurrplay({ index: 0, time: 0 });
+      localStorage.setItem("lastaudio", JSON.stringify({index:0,time:0}));
     }
 
     if (currplay.time !== 0) {
